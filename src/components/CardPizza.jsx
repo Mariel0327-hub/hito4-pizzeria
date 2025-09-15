@@ -1,6 +1,6 @@
 import { formatCLP } from "../data/format";
 
-export default function CardPizza({ name, price, ingredients, img }) {
+export default function CardPizza({ name, price, ingredients, img, }) {
   return (
     <div className="card h-100 shadow-sm rounded-3">
       {/* Imagen con alto fijo para uniformar alturas */}
@@ -19,14 +19,18 @@ export default function CardPizza({ name, price, ingredients, img }) {
         {/* Separador */}
         <div className="border-top my-2" />
 
-        {/* Ingredientes (una sola línea, un solo ícono) */}
+        {/* Ingredientes (un <li> por ingrediente) */}
         <p className="text-muted mb-1 text-center">Ingredientes:</p>
-        <div className="small text-secondary mb-3 text-center">
-          <span className="me-1" style={{ color: "#f0ad4e" }}>🍕</span>
-          {ingredients.join(", ")}
-        </div>
+        <ul className="small text-secondary mb-3 text-center list-unstyled">
+          {ingredients.map((ing, i) => (
+            <li key={i}>
+              <span className="me-1" style={{ color: "#f0ad4e" }}>🍕</span>
+              {ing}
+            </li>
+          ))}
+        </ul>
 
-        {/* Empuja todo lo que sigue al fondo de la card */}
+        {/* Empuja lo siguiente al fondo de la card */}
         <div className="border-top mt-auto mb-2" />
 
         {/* Precio centrado, grande, SIN caja */}

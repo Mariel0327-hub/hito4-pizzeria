@@ -1,17 +1,20 @@
+// src/App.jsx
 import Navbar from "./components/Navbar";
-// import Home from "./pages/Home";//
 import Footer from "./components/Footer";
+import Home from "./pages/Home";      
+// import Cart from "./pages/Cart";   // 
 import "./index.css";
 
-import RegisterPage from "./pages/RegisterPage";
-// import LoginPage from "./pages/LoginPage"; //
+// Login/Register comentados
+// import RegisterPage from "./pages/RegisterPage";
+// import LoginPage from "./pages/LoginPage";
 
 export default function App() {
   return (
     <div className="page">
       <Navbar />
-      {/* <Home /> */}   {/* <- deja Home comentado */}
-      <RegisterPage />
+      <Home />
+      {/* <RegisterPage /> */}
       {/* <LoginPage /> */}
       <Footer />
     </div>

@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import CardPizza from "../components/CardPizza";
-import { PIZZAS } from "../data/pizzas";
+import { pizzas } from "../assets/pizzas";
 
 export default function Home() {
   return (
@@ -10,8 +10,8 @@ export default function Home() {
         {/* Marco amarillo que encierra TODO el bloque de cards */}
         <div className="border border-warning rounded p-3">
           <div className="row row-cols-1 row-cols-md-3 g-4">
-            {PIZZAS.map((pz) => (
-              <div className="col" key={pz.name}>
+            {pizzas.map((pz) => (
+              <div className="col" key={pz.id}>
                 <CardPizza {...pz} />
               </div>
             ))}
