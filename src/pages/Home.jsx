@@ -8,36 +8,37 @@ export default function Home() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchPizzas() {
+    (async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/pizzas");
+        const res = await fetch("http://localhost:5000/api/pizzas"); 
         if (!res.ok) throw new Error("No se pudo cargar el listado de pizzas");
         const data = await res.json();
         setPizzas(data);
-      } catch (err) {
-        setError(err.message);
+      } catch (e) {
+        setError(e.message);
       } finally {
         setLoading(false);
       }
-    }
-    fetchPizzas();
+    })();
   }, []);
 
-  if (loading) return <main className="container my-4">Cargando...</main>;
-  if (error) return <main className="container my-4">Error: {error}</main>;
+  if (loading) return <main className="container my-4">Cargando…</main>;
+  if (error)   return <main className="container my-4">Error: {error}</main>;
 
   return (
     <div>
       <Header />
-      <div className="container my-4">
+      <main className="container my-4">
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {pizzas.map((pz) => (
             <div className="col" key={pz.id}>
+              {}
               <CardPizza {...pz} />
             </div>
           ))}
         </div>
-      </div>
+      </main>
     </div>
   );
 }
+
